@@ -1,22 +1,22 @@
 SET(lzma_sources
-        7zAlloc.c
-        7zCrc.c
-        7zCrcOpt.c
-        Alloc.c
-        Bra.c
-        Bra86.c
-        BraIA64.c
-        CpuArch.c
-        Delta.c
-        Lzma2Dec.c
-        LzmaDec.c
-        Sha256.c
-        Xz.c
-        XzCrc64.c
-        XzCrc64Opt.c
-        XzDec.c)
+        src/7zAlloc.c
+        src/7zCrc.c
+        src/7zCrcOpt.c
+        src/Alloc.c
+        src/Bra.c
+        src/Bra86.c
+        src/BraIA64.c
+        src/CpuArch.c
+        src/Delta.c
+        src/Lzma2Dec.c
+        src/LzmaDec.c
+        src/Sha256.c
+        src/Xz.c
+        src/XzCrc64.c
+        src/XzCrc64Opt.c
+        src/XzDec.c)
 ADD_LIBRARY(lzma STATIC ${lzma_sources})
-TARGET_INCLUDE_DIRECTORIES(lzma PUBLIC .)
+TARGET_INCLUDE_DIRECTORIES(lzma PUBLIC include)
 TARGET_COMPILE_OPTIONS(lzma
         PRIVATE
         -std=c11
