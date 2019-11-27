@@ -118,12 +118,9 @@ Tombstone 文件默认将被写入到 `Context#getFilesDir() + "/tombstones"` �
 
 #### 1. 下载 [Android NDK r16b](https://developer.android.com/ndk/downloads/revision_history.html)，设置 PATH 环境变量。
 
-#### 2. 编译和复制 native 库。
-
-```
-cd ./src/native/
-./build.sh
-./install.sh
+```properties
+sdk.dir=your/path/to/sdk
+ndk.dir=your/path/to/ndk
 ```
 
 #### 3. 编译 AAR 库。
@@ -133,6 +130,19 @@ cd ./src/java/xcrash/
 ./gradlew :xcrash_lib:build
 ```
 
+> 如果你需要用 libxcrash.so 和 libxcrash_dumper.so 来构建自己的可执行文件, 请尝试使用 src/native/build_via_cmake.sh
+
+```bash
+# Windows: run the following cmds in cmd window.
+setx /m ANDROID_SDK_ROOT "/path/to/sdk"
+setx /m ANDROID_NDK_ROOT "/path/to/ndk"
+
+# macOS & Linux: add the following two lines to ~/.bash_profile, and then source ~/.bash_profile or reopen the terminal
+export ANDROID_SDK_ROOT="/path/to/sdk"
+export ANDROID_NDK_ROOT="/path/to/ndk"
+# 1. 修改 build_via_cmake.sh 中的 XCRASH_OUTPUT_DIRECTORY 为你想要的输出路径
+# 2. 在任何路径调用 build_via_cmake.sh
+```
 
 ## 技术支持
 

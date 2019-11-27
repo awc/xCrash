@@ -118,21 +118,34 @@ If you want to build xCrash from source code. Follow this guide:
 
 #### 1. Download [Android NDK r16b](https://developer.android.com/ndk/downloads/revision_history.html), set PATH environment. 
 
-#### 2. Build and copy the native libraries.
+**src/java/xcrash/local.properties**
 
-```
-cd ./src/native/
-./build.sh
-./install.sh
+```properties
+sdk.dir=your/path/to/sdk
+ndk.dir=your/path/to/ndk
 ```
 
-#### 3. Build AAR library.
+#### 2. Build AAR library.
 
 ```
 cd ./src/java/xcrash/
 ./gradlew :xcrash_lib:build
 ```
 
+> If you need libxcrash.so & libxcrash_dumper.so to build your own executable binary file, please try using src/native/build_via_cmake.sh.
+
+```bash
+# Windows: run the following cmds in cmd window.
+setx /m ANDROID_SDK_ROOT "/path/to/sdk"
+setx /m ANDROID_NDK_ROOT "/path/to/ndk"
+# TODO: build_via_cmake.bat
+
+# macOS & Linux: add the following two lines to ~/.bash_profile, and then source ~/.bash_profile or reopen the terminal
+export ANDROID_SDK_ROOT="/path/to/sdk"
+export ANDROID_NDK_ROOT="/path/to/ndk"
+# 1. in file src/native/build_via_cmake.sh, change XCRASH_OUTPUT_DIRECTORY as you wanted 
+# 2. call src/native/build_via_cmake.sh in any dir 
+```
 
 ## Support
 
@@ -147,7 +160,6 @@ cd ./src/java/xcrash/
 ## Contributing
 
 See [xCrash Contributing Guide](CONTRIBUTING.md).
-
 
 ## License
 
